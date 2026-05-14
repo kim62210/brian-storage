@@ -71,7 +71,9 @@
     gap: 8px;
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
-    background: var(--bg1);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 .http-scroll {
     @include panel-scroll;
@@ -258,11 +260,13 @@
     padding: 10px 16px;
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
-    background: var(--bg1);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 .dns-stat {
-    background: var(--bg2);
-    border: 1px solid var(--border);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     border-radius: var(--r);
     padding: 8px 14px;
     display: flex;

@@ -57,8 +57,8 @@
     gap: 12px;
 }
 .share-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     border-radius: var(--r-lg);
     overflow: hidden;
     transition: border-color var(--transition-normal);
@@ -71,7 +71,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 12px;
-    background: var(--bg3);
+    background: var(--glass-bg-hover);
     border-bottom: 1px solid var(--border);
     gap: 8px;
 }

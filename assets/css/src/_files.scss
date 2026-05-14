@@ -4,7 +4,7 @@
    FILES PANEL
    ══════════════════════════════════ */
 .files-toolbar {
-    padding: 10px 16px;
+    padding: 12px 16px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -66,9 +66,9 @@
 }
 .search-input {
     @include input-base;
-    font-size: 13px;
-    padding: 5px 10px 5px 27px;
-    width: 180px;
+    font-size: 14px;
+    padding: 8px 12px 8px 30px;
+    width: 200px;
     transition:
         border-color var(--transition-normal),
         width var(--transition-slow);
@@ -90,13 +90,15 @@
     border-collapse: collapse;
 }
 .file-table thead tr {
-    background: var(--bg1);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     position: sticky;
     top: 0;
     z-index: 5;
 }
 .file-table th {
-    padding: 8px 12px;
+    padding: 10px 14px;
     text-align: left;
     font-size: 11px;
     font-weight: 600;
@@ -125,7 +127,7 @@
     color: var(--accent);
 }
 .file-table td {
-    padding: 7px 12px;
+    padding: 12px 14px;
     border-bottom: 1px solid var(--border);
     vertical-align: middle;
 }
@@ -136,7 +138,7 @@
     transition: background var(--transition-fast);
 }
 .file-table tbody tr:hover {
-    background: var(--bg2);
+    background: var(--glass-highlight);
 }
 .file-table tbody tr.selected {
     background: var(--accent-dim);
@@ -160,8 +162,8 @@
     color: var(--accent);
 }
 .file-icon {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     flex-shrink: 0;
     color: var(--text2);
 }
@@ -197,7 +199,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    opacity: 0;
+    opacity: 0.6;
     transition: opacity var(--transition-normal);
 }
 .file-table tbody tr:hover .fc-actions {
@@ -210,8 +212,8 @@
 }
 .row-check input[type="checkbox"] {
     accent-color: var(--accent);
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
 }
 
@@ -278,7 +280,7 @@
 .drop-area {
     border: 2px dashed var(--border);
     border-radius: var(--r);
-    padding: 24px;
+    padding: 32px;
     text-align: center;
     cursor: pointer;
     transition:
@@ -379,7 +381,7 @@
 .form-input {
     @include input-base;
     width: 100%;
-    padding: 8px 12px;
+    padding: 10px 14px;
 }
 
 /* ── bulk actions bar ── */

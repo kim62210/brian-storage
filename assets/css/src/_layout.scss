@@ -3,8 +3,10 @@
 /* ── topbar ── */
 .topbar {
     height: var(--topbar-h);
-    background: var(--bg1);
-    border-bottom: 1px solid var(--border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border);
     display: flex;
     align-items: center;
     padding: 0 16px;
@@ -51,8 +53,8 @@
 
 /* ── icon button ── */
 .ibtn {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     border-radius: var(--r);
     border: 1px solid var(--border);
     background: transparent;
@@ -78,8 +80,8 @@
     outline-offset: 2px;
 }
 .ibtn svg {
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
     pointer-events: none;
 }
 
@@ -93,8 +95,10 @@
 /* ── sidebar ── */
 .sidebar {
     width: var(--sidebar-w);
-    background: var(--bg1);
-    border-right: 1px solid var(--border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-right: 1px solid var(--glass-border);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,8 +107,8 @@
     flex-shrink: 0;
 }
 .snav {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: var(--r);
     border: none;
     background: transparent;
@@ -121,8 +125,8 @@
         background var(--transition-normal);
 }
 .snav svg {
-    width: 17px;
-    height: 17px;
+    width: 19px;
+    height: 19px;
     pointer-events: none;
 }
 .snav .snav-label {

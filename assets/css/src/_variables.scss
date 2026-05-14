@@ -54,13 +54,22 @@
     --r: 6px;
     --r-lg: 10px;
     --sidebar-w: 52px;
-    --topbar-h: 44px;
+    --topbar-h: 48px;
     --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 
     /* Transition durations */
     --transition-fast: 0.1s;
     --transition-normal: 0.15s;
     --transition-slow: 0.2s;
+
+    /* Glass */
+    --glass-bg: rgba(59, 66, 82, 0.75);
+    --glass-bg-hover: rgba(59, 66, 82, 0.85);
+    --glass-border: rgba(216, 222, 233, 0.1);
+    --glass-border-hover: rgba(216, 222, 233, 0.18);
+    --glass-highlight: rgba(255, 255, 255, 0.04);
+    --glass-blur: 10px;
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="light"] {
@@ -98,4 +107,13 @@
     --purple-dim: rgba(180, 142, 173, 0.1);
 
     --green: #a3be8c;
+
+    /* Glass */
+    --glass-bg: rgba(229, 233, 240, 0.7);
+    --glass-bg-hover: rgba(229, 233, 240, 0.82);
+    --glass-border: rgba(46, 52, 64, 0.08);
+    --glass-border-hover: rgba(46, 52, 64, 0.16);
+    --glass-highlight: rgba(255, 255, 255, 0.5);
+    --glass-blur: 10px;
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }

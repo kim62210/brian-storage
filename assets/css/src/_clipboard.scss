@@ -77,7 +77,9 @@
     display: flex;
     gap: 8px;
     align-items: flex-end;
-    background: var(--bg1);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     flex-shrink: 0;
 }
 .clip-textarea {
@@ -85,7 +87,7 @@
     flex: 1;
     padding: 8px 12px;
     resize: none;
-    min-height: 64px;
+    min-height: 72px;
     max-height: 160px;
     font-family: var(--mono);
     font-size: 13px;
