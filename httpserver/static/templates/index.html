@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="ko" data-theme="dark">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="csrf-token" content="{{.CSRFToken}}" />
         <meta name="max-upload" content="{{.MaxUpload}}" />
-        <title>goshs {{.GoshsVersion}} — {{.AbsPath}}</title>
+        <title>브라이언 파일저장소 {{.GoshsVersion}} — {{.AbsPath}}</title>
         <link rel="stylesheet" href="/css/style.css?static" />
         {{if .Catcher}}
         <link rel="stylesheet" href="/css/xterm.css?static" />
@@ -22,13 +22,13 @@
                     width="24"
                     height="24"
                 />
-                goshs<span class="slash">/</span>
+                브라이언 파일저장소<span class="slash">/</span>
             </div>
             <div class="topbar-path" id="topbar-path">
                 <span class="path-seg">{{.AbsPath}}</span>
             </div>
             <div class="topbar-actions">
-                <button class="ibtn" onclick="showQR('')" title="QR Code">
+                <button class="ibtn" onclick="showQR('')" title="QR 코드">
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -48,7 +48,7 @@
                     class="ibtn"
                     onclick="toggleTheme()"
                     id="theme-btn"
-                    title="Toggle theme"
+                    title="테마 전환"
                 >
                     <svg
                         id="theme-icon"
@@ -75,7 +75,7 @@
                     class="snav active"
                     id="nav-files"
                     onclick="switchPanel('files', this)"
-                    title="Files"
+                    title="파일"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -87,14 +87,14 @@
                             d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"
                         />
                     </svg>
-                    <span class="snav-label">Files</span>
+                    <span class="snav-label">파일</span>
                 </button>
                 {{if not .NoClipboard}}
                 <button
                     class="snav"
                     id="nav-clip"
                     onclick="switchPanel('clipboard', this)"
-                    title="Clipboard"
+                    title="클립보드"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -107,7 +107,7 @@
                         />
                         <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
                     </svg>
-                    <span class="snav-label">Clip</span>
+                    <span class="snav-label">클립보드</span>
                     <span class="badge" id="clip-badge"></span>
                 </button>
                 {{end}}
@@ -115,7 +115,7 @@
                     class="snav"
                     id="nav-collab"
                     onclick="switchPanel('collab', this)"
-                    title="Collaborator"
+                    title="협업"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -127,7 +127,7 @@
                             d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"
                         />
                     </svg>
-                    <span class="snav-label">Collab</span>
+                    <span class="snav-label">협업</span>
                     <span class="badge" id="collab-badge"></span>
                 </button>
                 {{ if .Embedded }}
@@ -135,7 +135,7 @@
                     class="snav"
                     id="nav-embedded"
                     onclick="switchPanel('embedded', this)"
-                    title="Embedded files"
+                    title="내장 파일"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -147,14 +147,14 @@
                         <path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12" />
                         <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
                     </svg>
-                    <span class="snav-label">Embedded</span>
+                    <span class="snav-label">내장 파일</span>
                 </button>
                 {{end}} {{ if gt (len .SharedLinks) 0}}
                 <button
                     class="snav"
                     id="nav-share"
                     onclick="switchPanel('share', this)"
-                    title="Shared Links"
+                    title="공유 링크"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -168,14 +168,14 @@
                         <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
                         <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
                     </svg>
-                    <span class="snav-label">Shared Links</span>
+                    <span class="snav-label">공유 링크</span>
                 </button>
                 {{ end}} {{if .CLI}}
                 <button
                     class="snav"
                     id="nav-cli"
                     onclick="switchPanel('cli', this)"
-                    title="Terminal"
+                    title="터미널"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -186,14 +186,14 @@
                         <polyline points="4 17 10 11 4 5" />
                         <line x1="12" y1="19" x2="20" y2="19" />
                     </svg>
-                    <span class="snav-label">CLI</span>
+                    <span class="snav-label">터미널</span>
                 </button>
                 {{end}} {{if .Catcher}}
                 <button
                     class="snav"
                     id="nav-catcher"
                     onclick="switchPanel('catcher', this)"
-                    title="Catcher"
+                    title="캐처"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -203,7 +203,7 @@
                     >
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     </svg>
-                    <span class="snav-label">Catcher</span>
+                    <span class="snav-label">캐처</span>
                     <span class="badge" id="catcher-badge"></span>
                 </button>
                 {{end}}
@@ -211,7 +211,7 @@
                 <button
                     class="snav"
                     onclick="window.open('/?goshs-info', '_blank')"
-                    title="Info"
+                    title="정보"
                     style="opacity: 0.5"
                 >
                     <svg
@@ -254,7 +254,7 @@
                                     class="search-input"
                                     id="file-search"
                                     type="text"
-                                    placeholder="Search files…"
+                                    placeholder="파일 검색..."
                                     oninput="filterFiles()"
                                 />
                             </div>
@@ -275,7 +275,7 @@
                                         d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"
                                     />
                                 </svg>
-                                Upload
+                                업로드
                             </button>
                             <button class="btn" onclick="openMkdir()">
                                 <svg
@@ -290,14 +290,14 @@
                                     <line x1="12" y1="11" x2="12" y2="17" />
                                     <line x1="9" y1="14" x2="15" y2="14" />
                                 </svg>
-                                New folder
+                                새 폴더
                             </button>
                             {{end}}
                             <button
                                 class="btn"
                                 onclick="downloadBulk()"
                                 id="btn-zip"
-                                title="Download as zip"
+                                title="ZIP으로 다운로드"
                             >
                                 <svg
                                     viewBox="0 0 24 24"
@@ -318,7 +318,7 @@
                     <!-- bulk actions bar -->
                     <div class="bulk-bar" id="bulk-bar">
                         <span class="bulk-bar-label" id="bulk-count"
-                            >0 selected</span
+                            >0개 선택</span
                         >
                         <button class="btn btn-sm" onclick="downloadSelected()">
                             <svg
@@ -330,7 +330,7 @@
                                 <polyline points="7 10 12 15 17 10" />
                                 <line x1="12" y1="15" x2="12" y2="3" />
                             </svg>
-                            Download
+                            다운로드
                         </button>
                         {{if not .NoDelete}}
                         <button
@@ -347,7 +347,7 @@
                                 <path d="M19 6l-1 14H6L5 6" />
                                 <path d="M10 11v6M14 11v6M9 6V4h6v2" />
                             </svg>
-                            Delete
+                            삭제
                         </button>
                         {{end}}
                         <div class="bulk-bar-spacer"></div>
@@ -355,7 +355,7 @@
                             class="btn btn-sm btn-ghost"
                             onclick="clearSelection()"
                         >
-                            ✕ Clear
+                            ✕ 선택 해제
                         </button>
                     </div>
 
@@ -377,22 +377,22 @@
                                         onclick="sortTable('name')"
                                         id="th-name"
                                     >
-                                        Name <span class="sort-arrow">↕</span>
+                                        이름 <span class="sort-arrow">↕</span>
                                     </th>
                                     <th
                                         onclick="sortTable('size')"
                                         id="th-size"
                                     >
-                                        Size <span class="sort-arrow">↕</span>
+                                        크기 <span class="sort-arrow">↕</span>
                                     </th>
                                     <th
                                         onclick="sortTable('mtime')"
                                         id="th-mtime"
                                     >
-                                        Modified
+                                        수정일
                                         <span class="sort-arrow">↕</span>
                                     </th>
-                                    <th>Actions</th>
+                                    <th>작업</th>
                                 </tr>
                             </thead>
                             <tbody id="file-tbody">
@@ -473,7 +473,7 @@
                                                 class="btn btn-sm"
                                                 href="{{.Name}}"
                                                 download
-                                                title="Download"
+                                                title="다운로드"
                                             >
                                                 <svg
                                                     viewBox="0 0 24 24"
@@ -496,7 +496,7 @@
                                             <button
                                                 class="btn btn-sm"
                                                 onclick="showQR('{{.RelPath}}/{{.Name}}')"
-                                                title="QRCode"
+                                                title="QR 코드"
                                             >
                                                 <svg
                                                     viewBox="0 0 24 24"
@@ -555,7 +555,7 @@
                                             <button
                                                 class="btn btn-sm"
                                                 onclick="shareFile('{{.RelPath}}/{{.Name}}')"
-                                                title="Share link"
+                                                title="공유 링크"
                                             >
                                                 <svg
                                                     viewBox="0 0 24 24"
@@ -597,7 +597,7 @@
                                             <button
                                                 class="btn btn-sm btn-danger"
                                                 onclick="deleteFile('{{.RelPath}}/{{.Name}}',false)"
-                                                title="Delete"
+                                                title="삭제"
                                             >
                                                 <svg
                                                     viewBox="0 0 24 24"
@@ -636,9 +636,8 @@
                                 />
                             </svg>
                             <p>
-                                This directory is empty.<br />{{if not
-                                .ReadOnly}}Drag files here or click Upload to
-                                add files.{{end}}
+                                이 디렉토리는 비어있습니다.<br />{{if not
+                                .ReadOnly}}파일을 여기에 끌어다 놓거나 업로드를 클릭하세요.{{end}}
                             </p>
                         </div>
                         {{end}}
@@ -661,7 +660,7 @@
                                         <button
                                             class="btn btn-sm btn-ghost"
                                             onclick="copyClip('{{$e.ID}}')"
-                                            title="Copy"
+                                            title="복사"
                                         >
                                             <svg
                                                 viewBox="0 0 24 24"
@@ -687,7 +686,7 @@
                                         <button
                                             class="btn btn-sm btn-danger"
                                             onclick="deleteClip('{{$e.ID}}')"
-                                            title="Delete"
+                                            title="삭제"
                                         >
                                             <svg
                                                 viewBox="0 0 24 24"
@@ -728,8 +727,7 @@
                                     />
                                 </svg>
                                 <p>
-                                    Clipboard is empty.<br />Add an entry below
-                                    to share text across sessions.
+                                    클립보드가 비어있습니다.<br />아래에 텍스트를 입력하여 세션 간에 공유하세요.
                                 </p>
                             </div>
                             {{end}}
@@ -738,7 +736,7 @@
                             <textarea
                                 class="clip-textarea"
                                 id="clip-input"
-                                placeholder="Paste or type text to share…"
+                                placeholder="공유할 텍스트를 입력하세요..."
                                 rows="3"
                             ></textarea>
                             <div class="clip-send-actions">
@@ -746,19 +744,19 @@
                                     class="btn btn-accent"
                                     onclick="sendClip()"
                                 >
-                                    Add
+                                    추가
                                 </button>
                                 <button
                                     class="btn"
                                     onclick="downloadClipboard()"
                                 >
-                                    Export
+                                    내보내기
                                 </button>
                                 <button
                                     class="btn btn-danger"
                                     onclick="clearClipboard()"
                                 >
-                                    Clear
+                                    초기화
                                 </button>
                             </div>
                         </div>
@@ -787,7 +785,7 @@
                                     />
                                     <polyline points="9 22 9 12 15 12 15 22" />
                                 </svg>
-                                HTTP log
+                                HTTP 로그
                                 <span class="cbadge" id="http-badge">0</span>
                             </div>
                             <div
@@ -806,7 +804,7 @@
                                         d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"
                                     />
                                 </svg>
-                                DNS log
+                                DNS 로그
                                 <span class="cbadge" id="dns-badge">0</span>
                             </div>
                             <div
@@ -826,7 +824,7 @@
                                     />
                                     <polyline points="22,6 12,13 2,6" />
                                 </svg>
-                                SMTP inbox
+                                SMTP 수신함
                                 <span class="cbadge" id="smtp-badge">0</span>
                             </div>
                             <div
@@ -846,7 +844,7 @@
                                     />
                                     <path d="M3 7V5a2 2 0 0 1 2-2h3l2 3" />
                                 </svg>
-                                SMB log
+                                SMB 로그
                                 <span class="cbadge" id="smb-badge">0</span>
                             </div>
                             <div
@@ -865,7 +863,7 @@
                                     <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
                                     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
                                 </svg>
-                                LDAP log
+                                LDAP 로그
                                 <span class="cbadge" id="ldap-badge">0</span>
                             </div>
                             <div
@@ -880,13 +878,13 @@
                                 <button
                                     class="btn btn-sm"
                                     onclick="exportAllLogs()"
-                                    title="Export all logs as JSON"
+                                    title="전체 로그 JSON 내보내기"
                                 >
-                                    Download All
+                                    전체 다운로드
                                 </button>
                                 <div class="live-dot" id="collab-dot"></div>
                                 <span class="status-text" id="collab-status"
-                                    >connecting…</span
+                                    >연결 중...</span
                                 >
                             </div>
                         </div>
@@ -908,7 +906,7 @@
                                         class="search-input"
                                         id="http-search"
                                         type="text"
-                                        placeholder="filter…"
+                                        placeholder="필터..."
                                         oninput="filterHTTP()"
                                     />
                                 </div>
@@ -923,13 +921,13 @@
                                         class="btn btn-sm"
                                         onclick="exportHTTP()"
                                     >
-                                        Export
+                                        내보내기
                                     </button>
                                     <button
                                         class="btn btn-sm btn-danger"
                                         onclick="clearHTTP()"
                                     >
-                                        Clear
+                                        초기화
                                     </button>
                                 </div>
                             </div>
@@ -937,11 +935,11 @@
                                 <table class="http-table">
                                     <thead>
                                         <tr>
-                                            <th>Time</th>
-                                            <th>Method</th>
-                                            <th>Status</th>
+                                            <th>시간</th>
+                                            <th>메서드</th>
+                                            <th>상태</th>
                                             <th>URL</th>
-                                            <th>Source</th>
+                                            <th>출처</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -967,9 +965,7 @@
                                                         />
                                                     </svg>
                                                     <p>
-                                                        No HTTP requests yet.<br />Requests
-                                                        will appear here in
-                                                        real-time.
+                                                        아직 HTTP 요청이 없습니다.<br />요청이 실시간으로 여기에 표시됩니다.
                                                     </p>
                                                 </div>
                                             </td>
@@ -989,7 +985,7 @@
                                     >
                                         0
                                     </div>
-                                    <div class="dns-stat-label">Total</div>
+                                    <div class="dns-stat-label">전체</div>
                                 </div>
                                 <div class="dns-stat">
                                     <div
@@ -1029,7 +1025,7 @@
                                     >
                                         0
                                     </div>
-                                    <div class="dns-stat-label">Other</div>
+                                    <div class="dns-stat-label">기타</div>
                                 </div>
                                 <div
                                     style="
@@ -1053,7 +1049,7 @@
                                             class="search-input"
                                             id="dns-search"
                                             type="text"
-                                            placeholder="filter…"
+                                            placeholder="필터..."
                                             oninput="renderDNS()"
                                         />
                                     </div>
@@ -1061,13 +1057,13 @@
                                         class="btn btn-sm"
                                         onclick="exportDNS()"
                                     >
-                                        Export
+                                        내보내기
                                     </button>
                                     <button
                                         class="btn btn-sm btn-danger"
                                         onclick="clearDNS()"
                                     >
-                                        Clear
+                                        초기화
                                     </button>
                                 </div>
                             </div>
@@ -1075,10 +1071,10 @@
                                 <table class="dns-table">
                                     <thead>
                                         <tr>
-                                            <th>Time</th>
-                                            <th>Type</th>
-                                            <th>Query</th>
-                                            <th>Source</th>
+                                            <th>시간</th>
+                                            <th>유형</th>
+                                            <th>쿼리</th>
+                                            <th>출처</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dns-tbody">
@@ -1102,7 +1098,7 @@
                                                             d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3"
                                                         />
                                                     </svg>
-                                                    <p>No DNS queries yet.</p>
+                                                    <p>아직 DNS 쿼리가 없습니다.</p>
                                                 </div>
                                             </td>
                                         </tr>
@@ -1128,7 +1124,7 @@
                                         class="search-input"
                                         id="smtp-search"
                                         type="text"
-                                        placeholder="filter…"
+                                        placeholder="필터..."
                                         oninput="renderSMTP()"
                                     />
                                 </div>
@@ -1137,13 +1133,13 @@
                                         class="btn btn-sm"
                                         onclick="exportSMTP()"
                                     >
-                                        Export
+                                        내보내기
                                     </button>
                                     <button
                                         class="btn btn-sm btn-danger"
                                         onclick="clearSMTP()"
                                     >
-                                        Clear
+                                        초기화
                                     </button>
                                 </div>
                             </div>
@@ -1160,7 +1156,7 @@
                                         />
                                         <polyline points="22,6 12,13 2,6" />
                                     </svg>
-                                    <p>No emails received yet.</p>
+                                    <p>아직 수신된 이메일이 없습니다.</p>
                                 </div>
                             </div>
                         </div>
@@ -1182,7 +1178,7 @@
                                         class="search-input"
                                         id="smb-search"
                                         type="text"
-                                        placeholder="filter…"
+                                        placeholder="필터..."
                                         oninput="renderSMB()"
                                     />
                                 </div>
@@ -1191,13 +1187,13 @@
                                         class="btn btn-sm"
                                         onclick="exportSMB()"
                                     >
-                                        Export
+                                        내보내기
                                     </button>
                                     <button
                                         class="btn btn-sm btn-danger"
                                         onclick="clearSMB()"
                                     >
-                                        Clear
+                                        초기화
                                     </button>
                                 </div>
                             </div>
@@ -1215,7 +1211,7 @@
                                         <path d="M3 7V5a2 2 0 0 1 2-2h3l2 3" />
                                         <line x1="8" y1="14" x2="16" y2="14" />
                                     </svg>
-                                    <p>No SMB logs found.</p>
+                                    <p>No SMB 로그s found.</p>
                                 </div>
                             </div>
                         </div>
@@ -1237,7 +1233,7 @@
                                         class="search-input"
                                         id="ldap-search"
                                         type="text"
-                                        placeholder="filter…"
+                                        placeholder="필터..."
                                         oninput="renderLDAP()"
                                     />
                                 </div>
@@ -1246,13 +1242,13 @@
                                         class="btn btn-sm"
                                         onclick="exportLDAP()"
                                     >
-                                        Export
+                                        내보내기
                                     </button>
                                     <button
                                         class="btn btn-sm btn-danger"
                                         onclick="clearLDAP()"
                                     >
-                                        Clear
+                                        초기화
                                     </button>
                                 </div>
                             </div>
@@ -1268,7 +1264,7 @@
                                         <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
                                         <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
                                     </svg>
-                                    <p>No LDAP events yet.</p>
+                                    <p>아직 LDAP 이벤트가 없습니다.</p>
                                 </div>
                             </div>
                         </div>
@@ -1286,7 +1282,7 @@
                                     color: var(--text2);
                                 "
                             >
-                                Read-only — compiled into binary
+                                읽기 전용 - 바이너리에 내장됨
                             </span>
                         </div>
                         <div class="files-toolbar-right">
@@ -1304,7 +1300,7 @@
                                     class="search-input"
                                     id="emb-search"
                                     type="text"
-                                    placeholder="Search embedded…"
+                                    placeholder="내장 파일 검색..."
                                     oninput="filterEmbedded()"
                                 />
                             </div>
@@ -1319,22 +1315,22 @@
                                         onclick="sortEmbedded('name')"
                                         id="emb-th-name"
                                     >
-                                        Name <span class="sort-arrow">↕</span>
+                                        이름 <span class="sort-arrow">↕</span>
                                     </th>
                                     <th
                                         onclick="sortEmbedded('size')"
                                         id="emb-th-size"
                                     >
-                                        Size <span class="sort-arrow">↕</span>
+                                        크기 <span class="sort-arrow">↕</span>
                                     </th>
                                     <th
                                         onclick="sortEmbedded('mtime')"
                                         id="emb-th-mtime"
                                     >
-                                        Modified
+                                        수정일
                                         <span class="sort-arrow">↕</span>
                                     </th>
-                                    <th>Actions</th>
+                                    <th>작업</th>
                                 </tr>
                             </thead>
                             <tbody id="emb-tbody">
@@ -1378,7 +1374,7 @@
                                                 class="btn btn-sm"
                                                 href="{{.Name}}?embedded"
                                                 download
-                                                title="Download"
+                                                title="다운로드"
                                             >
                                                 <svg
                                                     viewBox="0 0 24 24"
@@ -1400,7 +1396,7 @@
                                             <button
                                                 class="btn btn-sm"
                                                 onclick="copyEmbLink('{{.Name}}')"
-                                                title="Copy link"
+                                                title="링크 복사"
                                             >
                                                 <svg
                                                     viewBox="0 0 24 24"
@@ -1448,9 +1444,7 @@
                                                 />
                                             </svg>
                                             <p>
-                                                No embedded files.<br />Compile
-                                                with embedded assets to populate
-                                                this view.
+                                                내장 파일이 없습니다.<br />내장 파일을 포함하여 빌드하면 여기에 표시됩니다.
                                             </p>
                                         </div>
                                     </td>
@@ -1508,7 +1502,7 @@
                                         <button
                                             class="btn btn-sm btn-ghost"
                                             onclick="showShareQR('{{$token}}')"
-                                            title="Show QR"
+                                            title="QR 보기"
                                         >
                                             <svg
                                                 viewBox="0 0 24 24"
@@ -1568,7 +1562,7 @@
                                         <button
                                             class="btn btn-sm btn-danger"
                                             onclick="deleteShareLink('{{$token}}', '{{$link.FilePath}}')"
-                                            title="Delete"
+                                            title="삭제"
                                         >
                                             <svg
                                                 viewBox="0 0 24 24"
@@ -1610,7 +1604,7 @@
                                                 />
                                             </svg>
                                             <span
-                                                >Expires
+                                                >만료
                                                 <span
                                                     class="share-expiry-rel"
                                                     data-expires="{{ $link.Expires.Unix }}"
@@ -1644,7 +1638,7 @@
                                                 />
                                             </svg>
                                             {{ if eq $link.DownloadLimit -1 }}
-                                            <span>Unlimited downloads</span>
+                                            <span>무제한 다운로드</span>
                                             {{ else }} {{ $used :=
                                             $link.Downloaded }} {{ $left := sub
                                             $link.DownloadLimit $used }}
@@ -1670,7 +1664,7 @@
                                         <button
                                             class="btn btn-sm btn-ghost"
                                             onclick="copyShareUrl('{{$token}}')"
-                                            title="Copy URL"
+                                            title="URL 복사"
                                         >
                                             <svg
                                                 viewBox="0 0 24 24"
@@ -1722,7 +1716,7 @@
                                     y2="10.49"
                                 />
                             </svg>
-                            <p>No active shared links.</p>
+                            <p>활성 공유 링크가 없습니다.</p>
                         </div>
                         {{ end }}
                     </div>
@@ -1734,11 +1728,10 @@
                     <div class="cli-layout">
                         <div class="cli-output" id="cli-output">
                             <p class="cli-line sys">
-                                goshs {{.GoshsVersion}} — command interface
-                                ready
+                                브라이언 파일저장소 {{.GoshsVersion}} -- 명령어 인터페이스 준비 완료
                             </p>
                             <p class="cli-line sys">
-                                type a command and press Enter
+                                명령어를 입력하고 Enter를 누르세요
                             </p>
                         </div>
                         <div class="cli-input-row">
@@ -1747,7 +1740,7 @@
                                 class="cli-input"
                                 id="cli-input"
                                 type="text"
-                                placeholder="command…"
+                                placeholder="명령어..."
                                 autocomplete="off"
                                 spellcheck="false"
                             />
@@ -1768,7 +1761,7 @@
                             <div
                                 class="ctab ctab-add"
                                 onclick="spawnListenerTab()"
-                                title="New listener"
+                                title="새 리스너"
                             >
                                 +
                             </div>
@@ -1787,7 +1780,7 @@
                                     />
                                 </div>
                                 <div class="gen-row">
-                                    <label for="gen-port">Port</label>
+                                    <label for="gen-port">포트</label>
                                     <input
                                         type="number"
                                         id="gen-port"
@@ -1796,31 +1789,31 @@
                                     />
                                 </div>
                                 <div class="gen-row">
-                                    <label for="gen-shell">Shell</label>
+                                    <label for="gen-shell">셸</label>
                                     <select
                                         id="gen-shell"
                                         onchange="updateGeneratorOutput()"
                                     ></select>
                                 </div>
                                 <div class="gen-row">
-                                    <label for="gen-encoding">Encoding</label>
+                                    <label for="gen-encoding">인코딩</label>
                                     <select
                                         id="gen-encoding"
                                         onchange="updateGeneratorOutput()"
                                     >
-                                        <option value="none">None</option>
-                                        <option value="url">URL Encode</option>
+                                        <option value="none">없음</option>
+                                        <option value="url">URL 인코딩</option>
                                         <option value="base64">Base64</option>
                                     </select>
                                 </div>
                                 <div class="gen-output-wrap">
                                     <div class="gen-output-header">
-                                        <span>Command</span>
+                                        <span>명령어</span>
                                         <button
                                             class="gen-copy-btn"
                                             onclick="copyGeneratorOutput()"
                                         >
-                                            Copy
+                                            복사
                                         </button>
                                     </div>
                                     <pre
@@ -1830,12 +1823,12 @@
                                 </div>
                                 <div class="gen-listener-wrap">
                                     <div class="gen-output-header">
-                                        <span>Listener</span>
+                                        <span>리스너</span>
                                         <button
                                             class="gen-copy-btn"
                                             onclick="copyListenerCommand()"
                                         >
-                                            Copy
+                                            복사
                                         </button>
                                     </div>
                                     <pre
@@ -1845,7 +1838,7 @@
                                 </div>
                             </div>
                             <div class="gen-credit">
-                                Payload templates inspired by <a href="https://revshells.com" target="_blank" rel="noopener">revshells.com</a>
+                                페이로드 템플릿 출처: <a href="https://revshells.com" target="_blank" rel="noopener">revshells.com</a>
                             </div>
                         </div>
                     </div>
@@ -1860,7 +1853,7 @@
         <div class="modal-backdrop" id="upload-modal">
             <div class="modal">
                 <div class="modal-header">
-                    <span class="modal-title">Upload files</span>
+                    <span class="modal-title">파일 업로드</span>
                     <button
                         class="modal-close"
                         onclick="closeModal('upload-modal')"
@@ -1888,8 +1881,8 @@
                                 d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"
                             />
                         </svg>
-                        <p>Click to select or drag files here</p>
-                        <p class="hint">Multiple files supported</p>
+                        <p>클릭하여 선택하거나 파일을 여기에 끌어다 놓으세요</p>
+                        <p class="hint">여러 파일 지원</p>
                     </div>
                     <div id="upload-file-list"></div>
                     <div class="progress-bar-wrap" id="upload-progress-wrap">
@@ -1901,10 +1894,10 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn" onclick="closeModal('upload-modal')">
-                        Cancel
+                        취소
                     </button>
                     <button class="btn btn-accent" onclick="startUpload()">
-                        Upload
+                    업로드
                     </button>
                 </div>
             </div>
@@ -1914,7 +1907,7 @@
         <div class="modal-backdrop" id="mkdir-modal">
             <div class="modal" style="min-width: 360px">
                 <div class="modal-header">
-                    <span class="modal-title">New folder</span>
+                    <span class="modal-title">새 폴더</span>
                     <button
                         class="modal-close"
                         onclick="closeModal('mkdir-modal')"
@@ -1923,21 +1916,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label class="form-label">Folder name</label>
+                    <label class="form-label">폴더 이름</label>
                     <input
                         class="form-input"
                         id="mkdir-input"
                         type="text"
-                        placeholder="e.g. uploads"
+                        placeholder="예: 업로드"
                         onkeydown="if (event.key === 'Enter') createDir();"
                     />
                 </div>
                 <div class="modal-footer">
                     <button class="btn" onclick="closeModal('mkdir-modal')">
-                        Cancel
+                        취소
                     </button>
                     <button class="btn btn-accent" onclick="createDir()">
-                        Create
+                        생성
                     </button>
                 </div>
             </div>
@@ -1947,7 +1940,7 @@
         <div class="modal-backdrop" id="qr-modal">
             <div class="modal" style="min-width: 320px; max-width: 340px">
                 <div class="modal-header">
-                    <span class="modal-title">QR Code</span>
+                    <span class="modal-title">QR 코드</span>
                     <button
                         class="modal-close"
                         onclick="closeModal('qr-modal')"
@@ -1981,7 +1974,7 @@
         <div class="modal-backdrop" id="share-modal">
             <div class="modal">
                 <div class="modal-header">
-                    <span class="modal-title">Share link</span>
+                    <span class="modal-title">공유 링크</span>
                     <button
                         class="modal-close"
                         onclick="closeModal('share-modal')"
@@ -1992,7 +1985,7 @@
                 <div class="modal-body">
                     <div class="share-opts">
                         <div class="share-opt-row">
-                            <label>Download limit (0 = unlimited)</label>
+                            <label>다운로드 제한 (0 = 무제한)</label>
                             <input
                                 type="number"
                                 id="share-limit"
@@ -2001,7 +1994,7 @@
                             />
                         </div>
                         <div class="share-opt-row">
-                            <label>Expire after (minutes, default = 60)</label>
+                            <label>만료 시간 (분, 기본값 = 60)</label>
                             <input
                                 type="number"
                                 id="share-expire"
@@ -2021,13 +2014,13 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn" onclick="closeModal('share-modal')">
-                        Close
+                        닫기
                     </button>
                     <button
                         class="btn btn-accent"
                         onclick="generateShareLink()"
                     >
-                        Generate
+                        생성
                     </button>
                 </div>
             </div>
@@ -2046,8 +2039,8 @@
                     <line x1="12" y1="12" x2="12" y2="21" />
                     <path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3" />
                 </svg>
-                <p>Drop files to upload</p>
-                <small>Release to start uploading</small>
+                <p>파일을 놓아 업로드</p>
+                <small>놓으면 업로드가 시작됩니다</small>
             </div>
         </div>
 
@@ -2083,7 +2076,7 @@
                     />
                     <polyline points="15 3 21 3 21 9" />
                     <line x1="10" y1="14" x2="21" y2="3" /></svg
-                >Open
+                >열기
             </div>
             <div class="ctx-item" id="ctx-download">
                 <svg
@@ -2094,7 +2087,7 @@
                 >
                     <polyline points="7 10 12 15 17 10" />
                     <line x1="12" y1="15" x2="12" y2="3" /></svg
-                >Download
+                >다운로드
             </div>
             <div class="ctx-item" id="ctx-preview" style="display:none">
                 <svg
@@ -2105,7 +2098,7 @@
                 >
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                     <circle cx="12" cy="12" r="3"/></svg
-                >Preview
+                >미리보기
             </div>
             <div class="ctx-item" id="ctx-share">
                 <svg
@@ -2119,7 +2112,7 @@
                     <circle cx="18" cy="19" r="3" />
                     <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
                     <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" /></svg
-                >Share link
+                >공유 링크
             </div>
             <div class="ctx-sep"></div>
             <div class="ctx-item danger" id="ctx-delete">
@@ -2132,7 +2125,7 @@
                     <polyline points="3 6 5 6 21 6" />
                     <path d="M19 6l-1 14H6L5 6" />
                     <path d="M10 11v6M14 11v6M9 6V4h6v2" /></svg
-                >Delete
+                >삭제
             </div>
         </div>
 

@@ -51,7 +51,7 @@ export function updateBulkBar() {
   const checked = document.querySelectorAll(".row-check-item:checked").length;
   const bar = document.getElementById("bulk-bar");
   bar.classList.toggle("show", checked > 0);
-  document.getElementById("bulk-count").textContent = checked + " selected";
+  document.getElementById("bulk-count").textContent = checked + "개 선택";
 }
 export function clearSelection() {
   document
@@ -95,10 +95,10 @@ export function downloadBulk() {
 function deleteSelected() {
   const vals = getSelectedValues();
   if (!vals.length) return;
-  if (!confirm(`Delete ${vals.length} item(s)?`)) return;
+  if (!confirm(`${vals.length}개 항목을 삭제하시겠습니까?`)) return;
   Promise.all(vals.map((val) => deleteFile(val, true)))
     .then(() => location.reload())
-    .catch(() => toast("Delete failed", "error"));
+    .catch(() => toast("삭제 실패", "error"));
 }
 function getCsrfToken() {
   const meta = document.querySelector('meta[name="csrf-token"]');
@@ -107,7 +107,7 @@ function getCsrfToken() {
 export function deleteFile(path, bulk) {
   let ok;
   !bulk
-    ? (ok = confirm("Do you really want to delete the file or directory?"))
+    ? (ok = confirm("파일 또는 디렉토리를 삭제하시겠습니까?"))
     : (ok = true);
 
   if (ok) {
@@ -120,7 +120,7 @@ export function deleteFile(path, bulk) {
       headers: { "X-CSRF-Token": getCsrfToken() },
     })
       .then(() => location.reload())
-      .catch(() => toast("Delete failed", "error"));
+      .catch(() => toast("삭제 실패", "error"));
   }
 }
 
@@ -160,7 +160,7 @@ export function removeUpload(i) {
 }
 export function startUpload() {
   if (!ST.pendingUploads.length) {
-    toast("No files selected", "warn");
+    toast("선택된 파일이 없습니다", "warn");
     return;
   }
   const fd = new FormData();
@@ -178,7 +178,7 @@ export function startUpload() {
   };
   xhr.onload = () => {
     if (xhr.status === 200) {
-      toast("Upload complete!", "success");
+      toast("업로드 완료!", "success");
       closeModal("upload-modal");
       ST.pendingUploads = [];
       setTimeout(() => location.reload(), 600);
@@ -189,14 +189,14 @@ export function startUpload() {
       );
       const msg =
         limitBytes > 0
-          ? "Upload rejected: exceeds the " +
+          ? "업로드 거부: " +
             fmtBytes(limitBytes) +
-            " server limit"
-          : "Upload rejected: file too large";
+            " 서버 제한 초과"
+          : "업로드 거부: 파일이 너무 큽니다";
       toast(msg, "error");
-    } else toast("Upload failed: " + xhr.statusText, "error");
+    } else toast("업로드 실패: " + xhr.statusText, "error");
   };
-  xhr.onerror = () => toast("Upload failed", "error");
+  xhr.onerror = () => toast("업로드 실패", "error");
   xhr.send(fd);
 }
 export function createDir() {
@@ -211,12 +211,12 @@ export function createDir() {
     .then((r) => {
       // if response http.Created
       if (r.status === 201) {
-        toast("Created: " + name, "success");
+        toast("생성 완료: " + name, "success");
         closeModal("mkdir-modal");
         setTimeout(() => location.reload(), 600);
-      } else toast("Failed", "error");
+      } else toast("실패", "error");
     })
-    .catch(() => toast("Network error", "error"));
+    .catch(() => toast("네트워크 오류", "error"));
 }
 
 // ══ DRAG-DROP ══

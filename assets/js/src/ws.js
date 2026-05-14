@@ -15,12 +15,12 @@ export function connectWS() {
   ST.ws = new WebSocket(`${proto}://${window.location.host}/?ws`);
   ST.ws.onopen = () => {
     document.getElementById("ws-status").style.color = "var(--accent)";
-    document.getElementById("collab-status").textContent = "connected";
+    document.getElementById("collab-status").textContent = "연결됨";
     console.log("Websocket connected");
   };
   ST.ws.onclose = () => {
     document.getElementById("ws-status").style.color = "var(--danger)";
-    document.getElementById("collab-status").textContent = "reconnecting…";
+    document.getElementById("collab-status").textContent = "재연결 중...";
     setTimeout(connectWS, 2500);
     console.log("WebSocket closed");
   };

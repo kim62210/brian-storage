@@ -70,8 +70,8 @@ export function copyEmbLink(name) {
     "?embedded";
   navigator.clipboard
     .writeText(url)
-    .then(() => toast("Link copied!", "success"))
-    .catch(() => toast("Copy failed", "error"));
+    .then(() => toast("링크 복사됨!", "success"))
+    .catch(() => toast("복사 실패", "error"));
 }
 
 // ══ PANEL / TAB SWITCHING ══

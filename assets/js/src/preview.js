@@ -77,7 +77,7 @@ export function previewFile(name) {
           container.innerHTML = DOMPurify.sanitize(marked.parse(text));
           openModal("md-modal");
         })
-        .catch(() => toast("Failed to load preview", "error"));
+        .catch(() => toast("미리보기 로드 실패", "error"));
       break;
     case "csv":
       fetch(name)
@@ -98,7 +98,7 @@ export function previewFile(name) {
           container.appendChild(table);
           openModal("md-modal");
         })
-        .catch(() => toast("Failed to load preview", "error"));
+        .catch(() => toast("미리보기 로드 실패", "error"));
       break;
     case "text":
       fetch(name)
@@ -115,7 +115,7 @@ export function previewFile(name) {
           hljs.highlightElement(code);
           openModal("md-modal");
         })
-        .catch(() => toast("Failed to load preview", "error"));
+        .catch(() => toast("미리보기 로드 실패", "error"));
       break;
   }
 }

@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="ko" data-theme="dark">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>goshs {{.GoshsVersion}} — error</title>
+        <title>브라이언 파일저장소 {{.GoshsVersion}} — error</title>
         <link rel="stylesheet" href="/css/style.css?static" />
         <style>
             .error-layout {
@@ -70,7 +70,7 @@
                     width="24"
                     height="24"
                 />
-                goshs<span class="slash">/</span>
+                브라이언 파일저장소<span class="slash">/</span>
             </div>
             <div class="topbar-path">
                 <span class="path-seg">error</span>
@@ -80,7 +80,7 @@
                     class="ibtn"
                     onclick="toggleTheme()"
                     id="theme-btn"
-                    title="Toggle theme"
+                    title="테마 전환"
                 >
                     <svg
                         id="theme-icon"
@@ -112,7 +112,7 @@
                         <line x1="12" y1="8" x2="12" y2="12" />
                         <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
-                    <h1 class="error-title">Something went wrong</h1>
+                    <h1 class="error-title">오류가 발생했습니다</h1>
                 </div>
                 <div class="error-body">{{.ErrorMessage}}</div>
                 <div class="error-footer">
@@ -125,7 +125,7 @@
                         >
                             <polyline points="15 18 9 12 15 6" />
                         </svg>
-                        Go back
+                        뒤로 가기
                     </button>
                     <button class="btn" onclick="window.location.href = '/'">
                         <svg
@@ -139,7 +139,7 @@
                             />
                             <polyline points="9 22 9 12 15 12 15 22" />
                         </svg>
-                        Home
+                        홈
                     </button>
                 </div>
             </div>

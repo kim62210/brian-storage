@@ -644,7 +644,7 @@ export function renderSMB() {
          <div class="smb-hash-label">Hashcat line</div>
          <div class="smb-hash-box">
            <code id="${hashId}">${esc(e.hash)}</code>
-           <button class="btn btn-sm smb-copy-btn" title="Copy hash">
+           <button class="btn btn-sm smb-copy-btn" title="해시 복사">
              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
@@ -664,7 +664,7 @@ export function renderSMB() {
         const text = document.getElementById(hashId)?.textContent || "";
         navigator.clipboard
           .writeText(text)
-          .then(() => toast("Hash copied!", "ok"));
+          .then(() => toast("해시 복사됨!", "ok"));
       };
     }
 
@@ -679,7 +679,7 @@ export function renderSMB() {
 
 function copyText(elementId) {
   const text = document.getElementById(elementId)?.textContent || "";
-  navigator.clipboard.writeText(text).then(() => toast("Copied!", "ok"));
+  navigator.clipboard.writeText(text).then(() => toast("복사됨!", "ok"));
 }
 
 export function clearSMB() {
@@ -781,7 +781,7 @@ export function renderLDAP() {
         <div class="smb-hash-label">Hashcat line</div>
         <div class="smb-hash-box">
           <code id="${hashId}">${esc(e.hash)}</code>
-          <button class="btn btn-sm smb-copy-btn ldap-copy-hash" title="Copy hash">
+          <button class="btn btn-sm smb-copy-btn ldap-copy-hash" title="해시 복사">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
               <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
@@ -801,7 +801,7 @@ export function renderLDAP() {
         <div class="smb-hash-label">Base DN (JNDI trigger)</div>
         <div class="smb-hash-box">
           <code id="${dnId}">${esc(e.dn || "—")}</code>
-          <button class="btn btn-sm smb-copy-btn ldap-copy-dn" title="Copy DN">
+          <button class="btn btn-sm smb-copy-btn ldap-copy-dn" title="DN 복사">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
               <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
@@ -814,7 +814,7 @@ export function renderLDAP() {
         <div class="smb-hash-label">Bind DN</div>
         <div class="smb-hash-box">
           <code id="${dnId}">${esc(e.dn)}</code>
-          <button class="btn btn-sm smb-copy-btn ldap-copy-dn" title="Copy DN">
+          <button class="btn btn-sm smb-copy-btn ldap-copy-dn" title="DN 복사">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
               <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
@@ -827,7 +827,7 @@ export function renderLDAP() {
         <div class="smb-hash-label">Password</div>
         <div class="smb-hash-box">
           <code id="${pwId}">${esc(e.password)}</code>
-          <button class="btn btn-sm smb-copy-btn ldap-copy-pw" title="Copy password">
+          <button class="btn btn-sm smb-copy-btn ldap-copy-pw" title="비밀번호 복사">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
               <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
@@ -840,17 +840,17 @@ export function renderLDAP() {
     body.querySelector(".ldap-copy-hash")?.addEventListener("click", (ev) => {
       ev.stopPropagation();
       navigator.clipboard.writeText(document.getElementById(hashId)?.textContent || "")
-        .then(() => toast("Hash copied!", "ok"));
+        .then(() => toast("해시 복사됨!", "ok"));
     });
     body.querySelector(".ldap-copy-dn")?.addEventListener("click", (ev) => {
       ev.stopPropagation();
       navigator.clipboard.writeText(document.getElementById(dnId)?.textContent || "")
-        .then(() => toast("DN copied!", "ok"));
+        .then(() => toast("DN 복사됨!", "ok"));
     });
     body.querySelector(".ldap-copy-pw")?.addEventListener("click", (ev) => {
       ev.stopPropagation();
       navigator.clipboard.writeText(document.getElementById(pwId)?.textContent || "")
-        .then(() => toast("Password copied!", "ok"));
+        .then(() => toast("비밀번호 복사됨!", "ok"));
     });
 
     header.onclick = () => card.classList.toggle("open");
@@ -989,7 +989,7 @@ function buildMailCard(e, isNew) {
                 <span class="attach-name" title="${esc(a.filename)}">${esc(a.filename)}</span>
                 <span class="attach-size">${fmtBytes(a.size)}</span>
                 <div class="attach-actions">
-                  <a class="btn btn-sm" href="/?smtp&id=${a.id}" download="${esc(a.filename)}" title="Download">
+                  <a class="btn btn-sm" href="/?smtp&id=${a.id}" download="${esc(a.filename)}" title="다운로드">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                   </a>
                   ${
@@ -1014,7 +1014,7 @@ function buildMailCard(e, isNew) {
     attSection.appendChild(list);
   }
 
-  // Raw headers
+  // 원본 헤더
   const rawSection = document.createElement("div");
   rawSection.className = "mail-raw-section";
   rawSection.style.display = "none";
@@ -1023,7 +1023,7 @@ function buildMailCard(e, isNew) {
   // Footer
   const footer = document.createElement("div");
   footer.className = "mail-footer";
-  footer.innerHTML = `<button class="btn btn-ghost btn-sm" data-action="raw">Raw headers</button>`;
+  footer.innerHTML = `<button class="btn btn-ghost btn-sm" data-action="raw">원본 헤더</button>`;
 
   // Toggle open/close
   function setOpen(open) {
@@ -1077,7 +1077,7 @@ function buildMailCard(e, isNew) {
     if (btn.dataset.action === "raw") {
       const showing = rawSection.style.display === "block";
       rawSection.style.display = showing ? "none" : "block";
-      btn.textContent = showing ? "Raw headers" : "Hide raw";
+      btn.textContent = showing ? "원본 헤더" : "원본 숨기기";
     }
   });
 
@@ -1147,7 +1147,7 @@ export function openHTMLPreview(url) {
                 </head><body>${html}</body></html>`);
       win.document.close();
     })
-    .catch(() => toast("Failed to load HTML attachment", "error"));
+    .catch(() => toast("HTML 첨부파일 로드 실패", "error"));
 }
 
 export function clearSMTP() {

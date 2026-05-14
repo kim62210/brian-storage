@@ -28,7 +28,7 @@ export function copyClip(id) {
   if (body) {
     navigator.clipboard
       .writeText(body.textContent)
-      .then(() => toast("Copied!", "success"));
+      .then(() => toast("복사됨!", "success"));
   }
 }
 export function deleteClip(id) {
@@ -42,12 +42,12 @@ export function downloadClipboard() {
   window.open("/?cbDown", "_blank");
 }
 export function clearClipboard() {
-  const result = confirm("Are you sure you want to clear the clipboard?");
+  const result = confirm("클립보드를 지우시겠습니까?");
   if (result) {
     var msg = {
       type: "clearClipboard",
       content: "",
     };
-    ST.ws.send(JSON.stringify(msg)).then(() => toast("Cleared!", "success"));
+    ST.ws.send(JSON.stringify(msg)).then(() => toast("지워졌습니다!", "success"));
   }
 }

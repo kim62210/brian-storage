@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="ko" data-theme="dark">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>goshs {{.GoshsVersion}}</title>
+        <title>브라이언 파일저장소 {{.GoshsVersion}}</title>
         <link rel="stylesheet" href="/css/style.css?static" />
         <style>
             .silent-layout {
@@ -72,14 +72,14 @@
                     width="24"
                     height="24"
                 />
-                goshs<span class="slash">/</span>
+                브라이언 파일저장소<span class="slash">/</span>
             </div>
             <div class="topbar-actions">
                 <button
                     class="ibtn"
                     onclick="toggleTheme()"
                     id="theme-btn"
-                    title="Toggle theme"
+                    title="테마 전환"
                 >
                     <svg
                         id="theme-icon"
@@ -107,10 +107,10 @@
                     height="32"
                 />
 
-                <h1 class="silent-title">go<span>shs</span></h1>
+                <h1 class="silent-title">브라이언 <span>파일저장소</span></h1>
                 <p class="silent-subtitle">
-                    Running in silent mode.<br />
-                    The server is active but the directory listing is disabled.
+                    비공개 모드로 실행 중입니다.<br />
+                    서버가 활성 상태이지만 디렉토리 목록이 비활성화되어 있습니다.
                 </p>
                 <span class="silent-version">{{.GoshsVersion}}</span>
             </div>

@@ -1,8 +1,10 @@
 # Stage 1: Build the Go application
 FROM golang:1.26-alpine AS builder
 
-# Set the Current Working Directory inside the container
 WORKDIR /app
+
+# Install Node.js/npm, esbuild, sass for JS/CSS rebuild
+RUN apk add --no-cache nodejs npm make && npm install -g esbuild sass
 
 # Copy go mod and sum files
 COPY go.mod go.sum ./
@@ -13,9 +15,8 @@ RUN go mod download
 # Copy the source from the current directory to the Working Directory inside the container
 COPY . .
 
-# Build the Go app. -cover is a no-op unless GOCOVERDIR is set at runtime,
-# so it is safe to keep on for production images too.
-RUN go build -cover -o goshs .
+# Rebuild JS/CSS assets, then build the Go binary
+RUN make generate && go build -ldflags="-s -w" -o goshs .
 
 # Stage 2: Create a minimal runtime image
 FROM alpine:latest

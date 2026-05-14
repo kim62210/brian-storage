@@ -48,7 +48,7 @@ export function generateShareLink() {
         size: 200,
       });
     })
-    .catch(() => toast("Share failed", "error"));
+    .catch(() => toast("공유 실패", "error"));
 }
 export function showQR(path) {
   var url = "";
@@ -92,7 +92,7 @@ function updateShareExpiries() {
     const exp = parseInt(el.dataset.expires, 10);
     const diff = exp - now;
     if (diff <= 0) {
-      el.textContent = "expired";
+      el.textContent = "만료됨";
       el.style.color = "var(--danger)";
     } else if (diff < 60) {
       el.textContent = `in ${diff}s`;
@@ -128,12 +128,12 @@ export function copyShareUrl(token) {
   if (!urlEl) return;
   navigator.clipboard
     .writeText(urlEl.textContent.trim())
-    .then(() => toast("URL copied", "success"))
-    .catch(() => toast("Copy failed", "error"));
+    .then(() => toast("URL 복사됨", "success"))
+    .catch(() => toast("복사 실패", "error"));
 }
 
 export function deleteShareLink(token, path) {
-  if (!confirm("Do you really want to delete the shared link?")) return;
+  if (!confirm("공유 링크를 삭제하시겠습니까?")) return;
 
   const proto = location.protocol === "https:" ? "https://" : "http://";
   const url = proto + window.location.host + "/?token=" + token;
@@ -144,5 +144,5 @@ export function deleteShareLink(token, path) {
       sessionStorage.setItem("activeTab", "nav-share");
       location.reload();
     })
-    .catch(() => toast("Delete failed", "error"));
+    .catch(() => toast("삭제 실패", "error"));
 }

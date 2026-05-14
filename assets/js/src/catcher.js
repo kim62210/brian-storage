@@ -112,7 +112,7 @@ export function copyGeneratorOutput() {
   const text = document.getElementById("gen-output")?.textContent || "";
   navigator.clipboard
     .writeText(text)
-    .then(() => toast("Copied to clipboard", "ok"));
+    .then(() => toast("클립보드에 복사됨", "ok"));
 }
 
 export function copyListenerCommand() {
@@ -120,7 +120,7 @@ export function copyListenerCommand() {
     document.getElementById("gen-listener-output")?.textContent || "";
   navigator.clipboard
     .writeText(text)
-    .then(() => toast("Copied to clipboard", "ok"));
+    .then(() => toast("클립보드에 복사됨", "ok"));
 }
 
 // ── Catcher Listeners ──
@@ -136,7 +136,7 @@ export function spawnListenerTab() {
   tab.id = `ctab-${tabId}`;
   const label = document.createElement("span");
   label.className = "ctab-label";
-  label.textContent = "Listener";
+  label.textContent = "리스너";
   label.ondblclick = function (e) {
     e.stopPropagation();
     renameListenerTab(tabId, this);
@@ -167,7 +167,7 @@ export function spawnListenerTab() {
           <label>Port</label>
           <input type="number" id="setup-port-${tabId}" value="4444" min="1" max="65535" />
         </div>
-        <button class="catcher-start-btn" id="setup-btn-${tabId}" onclick="startCatcherListener('${tabId}')">Start Listener</button>
+        <button class="catcher-start-btn" id="setup-btn-${tabId}" onclick="startCatcherListener('${tabId}')">리스너 시작</button>
       </div>
       <div class="catcher-sessions" id="sessions-${tabId}"></div>
     </div>`;
@@ -205,14 +205,14 @@ export function startCatcherListener(tabId) {
   const portInput = document.getElementById(`setup-port-${tabId}`);
   const port = parseInt(portInput?.value, 10);
   if (!port || port < 1 || port > 65535) {
-    toast("Invalid port (1-65535)", "error");
+    toast("유효하지 않은 포트 (1-65535)", "error");
     return;
   }
 
   const btn = document.getElementById(`setup-btn-${tabId}`);
   if (btn) {
     btn.disabled = true;
-    btn.textContent = "Starting...";
+    btn.textContent = "시작 중...";
   }
 
   const csrf = document.querySelector('meta[name="csrf-token"]')?.content || "";
@@ -224,7 +224,7 @@ export function startCatcherListener(tabId) {
     .then((r) => {
       if (!r.ok)
         return r.json().then((e) => {
-          throw new Error(e.error || "Failed");
+          throw new Error(e.error || "실패");
         });
       return r.json();
     })
@@ -234,7 +234,7 @@ export function startCatcherListener(tabId) {
       // Update tab label to show port if user hasn't renamed it
       const tab = document.getElementById(`ctab-${tabId}`);
       const lbl = tab?.querySelector(".ctab-label");
-      if (lbl && lbl.textContent === "Listener") lbl.textContent = port;
+      if (lbl && lbl.textContent === "리스너") lbl.textContent = port;
 
       // Replace setup form with listening status
       const setupEl = document.getElementById(`setup-${tabId}`);
@@ -256,12 +256,12 @@ export function startCatcherListener(tabId) {
           '<div class="catcher-empty">Waiting for connections...</div>';
       }
 
-      toast(`Listener started on port ${port}`, "ok");
+      toast(`포트 ${port}에서 리스너 시작됨`, "ok");
     })
     .catch((e) => {
       if (btn) {
         btn.disabled = false;
-        btn.textContent = "Start Listener";
+        btn.textContent = "리스너 시작";
       }
       toast(e.message, "error");
     });
@@ -307,7 +307,7 @@ export function stopCatcherListener(tabId) {
           </div>`;
       }
 
-      toast(`Listener on port ${ln.port} stopped`, "ok");
+      toast(`포트 ${ln.port}의 리스너 중지됨`, "ok");
     })
     .catch(() => {});
 }
@@ -322,7 +322,7 @@ export function showRestartForm(tabId, lastPort) {
         <label>Port</label>
         <input type="number" id="setup-port-${tabId}" value="${lastPort}" min="1" max="65535" />
       </div>
-      <button class="catcher-start-btn" id="setup-btn-${tabId}" onclick="startCatcherListener('${tabId}')">Start Listener</button>`;
+      <button class="catcher-start-btn" id="setup-btn-${tabId}" onclick="startCatcherListener('${tabId}')">리스너 시작</button>`;
 }
 
 export function restartCatcherListener(tabId) {
@@ -437,7 +437,7 @@ export function onCatcherConnection(msg) {
   const badge = document.getElementById("catcher-badge");
   if (badge) badge.classList.add("dot");
 
-  toast(`Reverse shell from ${msg.remoteAddr}`, "ok");
+  toast(`${msg.remoteAddr}에서 리버스 셸 연결`, "ok");
 }
 
 export function connectCatcherSession(sessionID) {
@@ -616,7 +616,7 @@ export function resizeCatcherTerm(sessionID) {
 export function upgradeCatcherUnix(sessionID) {
   const s = CT.sessions[sessionID];
   if (!s?.ws || s.ws.readyState !== WebSocket.OPEN) {
-    toast("Connect to the session first", "err");
+    toast("먼저 세션에 연결하세요", "err");
     return;
   }
   const enc = new TextEncoder();
@@ -650,7 +650,7 @@ export function upgradeCatcherUnix(sessionID) {
 export function upgradeCatcherWindows(sessionID) {
   const s = CT.sessions[sessionID];
   if (!s?.ws || s.ws.readyState !== WebSocket.OPEN) {
-    toast("Connect to the session first", "err");
+    toast("먼저 세션에 연결하세요", "err");
     return;
   }
   const rows = s.term?.rows || 24;
@@ -671,7 +671,7 @@ export function upgradeCatcherWindows(sessionID) {
   s.lineBuffer = "";
   const btn = document.querySelector(`#session-${sessionID} .catcher-session-linemode`);
   if (btn) btn.classList.remove("active");
-  toast("Sent ConPtyShell upgrade command", "ok");
+  toast("ConPtyShell 업그레이드 명령 전송됨", "ok");
 }
 
 function disconnectCatcherSession(sessionID) {
