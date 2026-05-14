@@ -70,6 +70,13 @@
     background: var(--bg3);
     border-color: var(--border-hover);
 }
+.ibtn:active {
+    transform: scale(0.93);
+}
+.ibtn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
 .ibtn svg {
     width: 15px;
     height: 15px;
