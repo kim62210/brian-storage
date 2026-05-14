@@ -16,21 +16,22 @@
     .topbar-brand { font-size: 13px; }
     .topbar-path { font-size: 11px; }
 
-    .sidebar {
-        position: fixed; bottom: 0; left: 0; right: 0;
-        width: 100%; height: 64px;
-        flex-direction: row; justify-content: space-around;
-        border-right: none; border-top: 1px solid var(--glass-border);
-        padding: 6px 0; z-index: 100; gap: 0;
-        overflow-x: auto; overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
+    .tab-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 56px;
+        border-bottom: none;
+        border-top: 1px solid var(--glass-border);
+        z-index: 100;
+        justify-content: space-around;
+        padding: 4px 8px;
     }
-    .sidebar-spacer { display: none; }
-    .snav { width: 52px; height: 52px; flex-shrink: 0; }
-    .snav svg { width: 22px; height: 22px; }
-    .snav .snav-label { font-size: 8px; }
-    .layout { flex-direction: column; }
-    .main { padding-bottom: 64px; }
+    .snav { flex-direction: column; gap: 2px; padding: 6px 12px; height: auto; flex-shrink: 0; }
+    .snav svg { width: 18px; height: 18px; }
+    .snav .snav-label { font-size: 9px; }
+    .main { padding-bottom: 56px; }
 
     .files-toolbar { padding: 10px 12px; flex-wrap: wrap; }
     .files-toolbar-left { flex: 1 1 100%; order: 2; }

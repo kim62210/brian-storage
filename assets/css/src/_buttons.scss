@@ -77,3 +77,18 @@
     font-size: 12px;
     border-radius: 8px;
 }
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border-hover);
+    color: var(--text1);
+}
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.btn-upload {
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--r);
+}

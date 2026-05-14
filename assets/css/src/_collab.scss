@@ -854,20 +854,29 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 48px 20px;
+    padding: 60px 20px;
     color: var(--text2);
     text-align: center;
-    gap: 8px;
+    gap: 16px;
     flex: 1;
+    border: 2px dashed var(--glass-border);
+    border-radius: var(--r-lg);
+    margin: 16px;
+    transition: all var(--transition-normal) ease;
+    cursor: pointer;
+}
+.empty-state:hover {
+    border-color: var(--accent);
+    background: var(--accent-dim);
 }
 .empty-state svg {
-    width: 40px;
-    height: 40px;
-    opacity: 0.25;
+    width: 56px;
+    height: 56px;
+    opacity: 0.3;
 }
 .empty-state p {
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.8;
 }
 
 /* ── status indicators ── */
