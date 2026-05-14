@@ -13,6 +13,11 @@ body {
 }
 body {
     background: var(--bg0);
+    background-image:
+        radial-gradient(ellipse at 20% 50%, var(--bg-gradient-1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, var(--bg-gradient-2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, var(--bg-gradient-3) 0%, transparent 50%);
+    background-attachment: fixed;
     color: var(--text0);
     font-family: var(--sans);
     font-size: 14px;
